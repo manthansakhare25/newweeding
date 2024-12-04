@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Greeting text with smooth appearance */
+        .greeting {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333; /* Dark black text for contrast */
+            text-align: center;
+            animation: fadeInGreeting 3s ease-out;
+        }
+
+        /* Flowers falling animation with petals */
+        .greetingFlowers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            pointer-events: none;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .greetingFlower {
+            position: absolute;
+            animation: flowerFall 6s ease-in-out infinite;
+            font-size: 30px;
+            opacity: 0.8;
+            color: pink;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes flowerFall {
+            0% {
+                top: -50px;
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Smooth fade-in greeting effect */
+        @keyframes fadeInGreeting {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Wedding card with Dusty Rose and Glittering Gold color */
+        .card {
+            width: 60%;
+            background: linear-gradient(135deg, #d1a6b5, #f4e1a1); /* Dusty Rose and Glittering Gold gradient */
+            color: #000000; /* Dark text for contrast */
+            padding: 20px;
+            position: relative;
+            display: none;
+            text-align: center;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            border: 2px solid #fff;
+            animation: fadeInCard 2s ease-out;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .card h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #000; /* Dark black text */
+        }
+
+        .card p {
+            font-size: 1.2rem;
+            margin: 10px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px #000, 0 0 25px #fff, 0 0 5px #fff; /* Text shadow for readability */
+        }
+
+        /* Card fade-in effect */
+        @keyframes fadeInCard {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000; /* Dark black text */
+        }
+
+        .venue, .date, .message {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Button Style */
+        .button {
+            background-color: #f1c27d; /* Beach Sand */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            border: none;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #d1b27d; /* Darker Beach Sand */
+        }
+
+        /* Centered Container for Greeting and Button */
+        .greetingContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Bride and Groom Artwork */
+        .coupleArtwork {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: auto;
+            background: url('couple-artwork.jpg') no-repeat center;
+            background-size: contain;
+            opacity: 0.8;
+        }
+
+        /* Floating flower petals */
+        .flowerPetal {
+            position: absolute;
+            animation: floatPetal 7s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatPetal {
+            0% {
+                top: -100px;
+                transform: rotate(0deg);
+            }
+            100% {
+                top: 100%;
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Adding more flower petals */
+        .flowerPetal1 { left: 10%; animation-duration: 6s; animation-delay: 0s; }
+        .flowerPetal2 { left: 20%; animation-duration: 7s; animation-delay: 1s; }
+        .flowerPetal3 { left: 30%; animation-duration: 8s; animation-delay: 2s; }
+        .flowerPetal4 { left: 40%; animation-duration: 6s; animation-delay: 3s; }
+        .flowerPetal5 { left: 50%; animation-duration: 9s; animation-delay: 4s; }
+        .flowerPetal6 { left: 60%; animation-duration: 8s; animation-delay: 5s; }
+        .flowerPetal7 { left: 70%; animation-duration: 7s; animation-delay: 6s; }
+        .flowerPetal8 { left: 80%; animation-duration: 6s; animation-delay: 7s; }
+        .flowerPetal9 { left: 90%; animation-duration: 7s; animation-delay: 8s; }
+
+        /* Bride and Groom Emoji Styling */
+        .brideEmoji {
+            font-size: 30px;
+            margin-left: 10px;
+        }
+
+        .groomEmoji {
+            font-size: 30px;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Greeting Section -->
+    <div class="greetingContainer">
+        <div class="greeting">
+            Namaste! You are invited to our special day 💖
+        </div>
+
+        <div class="greetingFlowers">
+            <!-- Flowers falling with animation -->
+            <div class="greetingFlower" style="left: 10%;">🌸</div>
+            <div class="greetingFlower" style="left: 30%;">🌸</div>
+            <div class="greetingFlower" style="left: 50%;">🌸</div>
+            <div class="greetingFlower" style="left: 70%;">🌸</div>
+            <div class="greetingFlower" style="left: 90%;">🌸</div>
+        </div>
+
+        <!-- Button to confirm attendance -->
+        <button class="button" onclick="showCard()">Okay, I will come!</button>
+    </div>
+
+    <!-- Wedding Card -->
+    <div class="card" id="weddingCard">
+        <h1>Wedding Invitation</h1>
+        <div class="name">
+            <span>ABHINANDAN</span><span class="groomEmoji">🤵</span> & <span class="brideEmoji">👰</span><span>BONISA</span>
+        </div>
+        <div class="venue">Venue: Nagpur Nakshatra Lawn</div>
+        <div class="date">Date: 25th December 2024</div>
+        <div class="message">We invite you to join us as we begin our new journey. Your presence will bless us forever!</div>
+        
+        <!-- Bride and Groom Artwork -->
+        <div class="coupleArtwork"></div>
+
+        <!-- Floating Flower Petals for decoration -->
+        <div class="flowerPetal flowerPetal1">🌸</div>
+        <div class="flowerPetal flowerPetal2">🌼</div>
+        <div class="flowerPetal flowerPetal3">💐</div>
+        <div class="flowerPetal flowerPetal4">🌸</div>
+        <div class="flowerPetal flowerPetal5">🌺</div>
+        <div class="flowerPetal flowerPetal6">🌸</div>
+        <div class="flowerPetal flowerPetal7">💐</div>
+        <div class="flowerPetal flowerPetal8">🌸</div>
+        <div class="flowerPetal flowerPetal9">🌼</div>
+    </div>
+
+    <script>
+        // Function to show the wedding card after confirmation
+        function showCard() {
+            document.querySelector(".greetingContainer").classList.add("hidden");
+            document.getElementById("weddingCard").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
